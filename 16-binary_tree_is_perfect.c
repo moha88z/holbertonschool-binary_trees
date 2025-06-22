@@ -1,6 +1,25 @@
 #include "binary_trees.h"
 
 /**
+ * tree_depth - Calculates the depth by going down the leftmost path
+ * @tree: Pointer to the root node
+ * Return: The depth of the leftmost path
+ */
+
+static size_t tree_depth(const binary_tree_t *tree)
+{
+    size_t depth = 0;
+
+    while (tree)
+    {
+        depth++;
+        tree = tree->left;
+    }
+
+    return depth;
+}
+
+/**
  * perfect_helper - recursively checks if a binary tree is perfect
  * @tree: pointer to current node in the binary tree
  * @depth: total depth/height of tree
@@ -23,18 +42,6 @@ int perfect_helper(const binary_tree_t *tree, size_t depth, size_t level)
 		perfect_helper(tree->right, depth, level + 1));
 }
 
-/* binary_tree_height - Measures the height of a binary tree */
-size_t binary_tree_height(const binary_tree_t *tree)
-{
-    if (!tree)
-        return 0;
-
-    size_t left = binary_tree_height(tree->left);
-    size_t right = binary_tree_height(tree->right);
-
-    return (left > right ? left : right) + 1;
-}
-
 /**
  * binary_tree_is_perfect - checks if a binary tree is perfect
  * @tree: pointer to root node of tree to check
@@ -43,10 +50,12 @@ size_t binary_tree_height(const binary_tree_t *tree)
 
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	size_t depth = binary_tree_height(tree);
+	size_t depth;
 
 	if (!tree)
 		return (0);
+
+	depth = tree_depth(tree);
 
 	return (perfect_helper(tree, depth, 0));
 }
