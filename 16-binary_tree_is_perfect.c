@@ -31,7 +31,7 @@ int perfect_helper(const binary_tree_t *tree, size_t depth, size_t level)
 
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	size_t depth = _height(tree);
+	size_t depth = binary_tree_height(tree);
 
 	if (!tree)
 		return (0);
