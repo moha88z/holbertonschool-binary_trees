@@ -1,22 +1,22 @@
 #include "binary_trees.h"
 
 /**
- * tree_depth - Calculates the depth by going down the leftmost path
- * @tree: Pointer to the root node
- * Return: The depth of the leftmost path
+ * tree_depth - calculates depth by going down the leftmost path
+ * @tree: pointer to root node
+ * Return: depth of leftmost path
  */
 
 static size_t tree_depth(const binary_tree_t *tree)
 {
-    size_t depth = 0;
+	size_t depth = 0;
 
-    while (tree)
-    {
-        depth++;
-        tree = tree->left;
-    }
+	while (tree)
+	{
+		depth++;
+		tree = tree->left;
+	}
 
-    return depth;
+	return (depth);
 }
 
 /**
