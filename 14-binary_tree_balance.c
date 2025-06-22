@@ -1,10 +1,16 @@
 #include "binary_trees.h"
 
+/**
+ * _height - calculates heigh
+ * @tree: pointer to node to measure balance factor
+ * Return: height
+ */
+
 size_t _height(const binary_tree_t *tree)
 {
 	size_t left_height;
 	size_t right_height;
-	
+
 	if (!tree)
 		return (0);
 
